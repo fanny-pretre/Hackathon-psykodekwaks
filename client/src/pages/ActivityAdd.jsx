@@ -56,7 +56,7 @@ function ActivityAdd() {
     <section className="activity-add">
       <h1>Proposez une activité !</h1>
 
-      <form onSubmit={onSubmit}>
+      <form className="form-activity-add" onSubmit={onSubmit}>
         <div className="input-label-activity-add">
           <label htmlFor="username">Qui propose cette activité</label>
           <select
@@ -154,7 +154,9 @@ function ActivityAdd() {
           />
         </div>
 
-        <button type="submit">Proposer cette activité</button>
+        <button className="button-activity-add" type="submit">
+          Proposer cette activité
+        </button>
       </form>
     </section>
   );
