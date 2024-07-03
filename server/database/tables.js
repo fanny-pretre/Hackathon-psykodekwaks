@@ -1,6 +1,10 @@
 // Import the repository modules responsible for handling data operations on the tables
-const ItemRepository = require("./models/ItemRepository");
-
+const RoleRepository = require("./models/RoleRepository");
+const ServiceRepository = require("./models/ServiceRepository");
+const ActivityTypeRepository = require("./models/ActivityTypeRepository");
+const UserRepository = require("./models/UserRepository");
+const ActivityRepository = require("./models/ActivityRepository");
+const ParticipationRepository = require("./models/ParticipationRepository");
 // Create an empty object to hold data repositories for different tables
 const tables = {};
 
@@ -9,8 +13,12 @@ const tables = {};
 /* ************************************************************************* */
 
 // Register each repository as data access point for its table
-tables.item = new ItemRepository();
-
+tables.role = new RoleRepository();
+tables.service = new ServiceRepository();
+tables.activity_type = new ActivityTypeRepository();
+tables.user = new UserRepository();
+tables.activity = new ActivityRepository();
+tables.participation = new ParticipationRepository();
 /* ************************************************************************* */
 
 // Use a Proxy to customize error messages when trying to access a non-existing table

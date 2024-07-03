@@ -3,7 +3,7 @@ const AbstractSeeder = require("./AbstractSeeder");
 class UserSeeder extends AbstractSeeder {
   constructor() {
     // Call the constructor of the parent class (AbstractSeeder) with appropriate options
-    super({ table: "user", truncate: true });
+    super({ table: "user", truncate: true, dependencies: [] });
   }
 
   // The run method - Populate the 'user' table with fake data
@@ -15,6 +15,12 @@ class UserSeeder extends AbstractSeeder {
       const fakeUser = {
         email: this.faker.internet.email(), // Generate a fake email using faker library
         password: this.faker.internet.password(), // Generate a fake password using faker library
+        firstname: this.faker.person.firstName(),
+        lastname: this.faker.person.lastName(),
+
+        // Foreign Keys
+        role_id: 1, // Get the insertId of the corresponding role
+        service_id: 3,
         refName: `user_${i}`, // Create a reference name for the user
       };
 

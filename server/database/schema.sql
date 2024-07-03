@@ -1,4 +1,3 @@
--- SQLBook: Code
 create table role (
   id INT unsigned PRIMARY KEY auto_increment NOT NULL,
   name VARCHAR(255) NOT NULL
@@ -8,8 +7,6 @@ create table service (
   id INT unsigned PRIMARY KEY auto_increment NOT NULL,
   name VARCHAR(255) NOT NULL
 );
-
-
 
 create table activity_type (
   id INT unsigned PRIMARY KEY auto_increment NOT NULL,
