@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
+import "../styles/activity-add.css";
+
 function ActivityAdd() {
   const navigate = useNavigate();
 
@@ -51,11 +53,11 @@ function ActivityAdd() {
   };
 
   return (
-    <section>
+    <section className="activity-add">
       <h1>Proposez une activité !</h1>
 
       <form onSubmit={onSubmit}>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="username">Qui propose cette activité</label>
           <select
             id="username"
@@ -71,7 +73,7 @@ function ActivityAdd() {
             ))}
           </select>
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="activityname">Le nom de votre activité</label>
           <input
             type="text"
@@ -81,7 +83,7 @@ function ActivityAdd() {
             onChange={(e) => setActivityName(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="place">Où aura lieu votre activité ?</label>
           <input
             type="text"
@@ -91,7 +93,7 @@ function ActivityAdd() {
             onChange={(e) => setPlace(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="date">Quand aura lieu votre activité ?</label>
           <input
             type="date"
@@ -101,7 +103,7 @@ function ActivityAdd() {
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="time">
             À quelle heure aura lieu votre activité ?
           </label>
@@ -113,7 +115,7 @@ function ActivityAdd() {
             onChange={(e) => setTime(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="activitytype">Choisissez le type d'activité</label>
           <select
             id="activitytype"
@@ -129,7 +131,7 @@ function ActivityAdd() {
             ))}
           </select>
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="activitydesc">
             Dites-nous en plus sur votre activité !
           </label>
@@ -141,7 +143,7 @@ function ActivityAdd() {
             onChange={(e) => setActivityDesc(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="image">Lien de l'image</label>
           <input
             type="text"

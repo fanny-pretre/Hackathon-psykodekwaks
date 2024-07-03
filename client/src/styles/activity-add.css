@@ -1,0 +1,15 @@
+.activity-add {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff4f4;
+  justify-content: center;
+  align-items: center;
+  width: 70vw;
+  height: 70vh;
+  border: solid 2px #96333e;
+  margin: auto;
+  margin-top: 5rem;
+}
+
+.input-label-activity-add {
+}
