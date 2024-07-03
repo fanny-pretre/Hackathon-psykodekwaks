@@ -56,7 +56,7 @@ function ActivityAdd() {
 
       <form onSubmit={onSubmit}>
         <div>
-          <label htmlFor="username">Qui propose cette activité</label>
+          <label htmlFor="username">Qui êtes vous ?</label>
           <select
             id="username"
             name="username"
