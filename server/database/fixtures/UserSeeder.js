@@ -9,6 +9,7 @@ class UserSeeder extends AbstractSeeder {
   // The run method - Populate the 'user' table with fake data
 
   run() {
+    const serviceIdRange = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     // Generate and insert fake data into the 'user' table
     for (let i = 0; i < 10; i += 1) {
       // Generate fake user data
@@ -19,8 +20,9 @@ class UserSeeder extends AbstractSeeder {
         lastname: this.faker.person.lastName(),
 
         // Foreign Keys
-        role_id: 1, // Get the insertId of the corresponding role
-        service_id: 3,
+        role_id: 2, // Get the insertId of the corresponding role
+        service_id:
+          serviceIdRange[Math.floor(Math.random() * serviceIdRange.length)],
         refName: `user_${i}`, // Create a reference name for the user
       };
 
