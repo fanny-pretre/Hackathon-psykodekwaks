@@ -33,15 +33,24 @@ class UserRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(
+      `SELECT user.*, service.name s_name, role.name r_name
+      FROM ${this.table} AS user
+      JOIN service ON user.service_id = service.id
+      JOIN role ON user.role_id = role.id`);
     return rows;
   }
 
-  async update(id, updatedService) {
-    const query = `
-    update ${this.table} set ? where id = ?`;
-    const [result] = await this.database.query(query, [updatedService, id]);
-    return result.affectedRows > 0;
+  async update(id, user) {
+
+    const [result] = await this.database.query(
+      `update ${this.table} set firstname = ?, lastname = ?, email = ?, password = ? where id = ?`,
+
+      [user.firstname, user.lastname, user.email, user.password, id]
+    );
+
+    console.info(result.affectedRows);
+    return result.affectedRows;
   }
 
   async delete(id) {

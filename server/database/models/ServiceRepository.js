@@ -7,8 +7,8 @@ class ServiceRepository extends AbstractRepository {
 
   async create(service) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (service) values (?)`,
-      [service.services]
+      `insert into ${this.table} (name) values (?)`,
+      [service.name]
     );
     return result.insertId;
   }
@@ -26,11 +26,16 @@ class ServiceRepository extends AbstractRepository {
     return rows;
   }
 
-  async update(id, updatedService) {
-    const query = `
-    update ${this.table} set ? where id = ?`;
-    const [result] = await this.database.query(query, [updatedService, id]);
-    return result.affectedRows > 0;
+  async update(id, service) {
+
+    const [result] = await this.database.query(
+      `update ${this.table} set name = ? where id = ?`,
+
+      [service.name, id]
+    );
+
+    console.info(result.affectedRows);
+    return result.affectedRows;
   }
 
   async delete(id) {
