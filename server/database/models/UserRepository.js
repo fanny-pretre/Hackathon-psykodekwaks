@@ -37,11 +37,19 @@ class UserRepository extends AbstractRepository {
     return rows;
   }
 
-  async update(id, updatedService) {
-    const query = `
-    update ${this.table} set ? where id = ?`;
-    const [result] = await this.database.query(query, [updatedService, id]);
-    return result.affectedRows > 0;
+  // The U of CRUD - Update operation
+  async update(id, user) {
+    // Execute the SQL UPDATE query to update a specific user
+
+    const [result] = await this.database.query(
+      `update ${this.table} set firstname = ?, lastname = ?, email = ?, password = ? where id = ?`,
+
+      [user.firstname, user.lastname, user.email, user.password, id]
+    );
+
+    // Return how many rows were affected
+    console.info(result.affectedRows);
+    return result.affectedRows;
   }
 
   async delete(id) {

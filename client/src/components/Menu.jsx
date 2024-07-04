@@ -15,6 +15,9 @@ function Menu() {
       <Link to="/login">
         <li className="menu-li">Connexion</li>
       </Link>
+      <Link to="/admin/:id">
+        <li className="menu-li">Admin</li>
+      </Link>
     </ul>
   );
 }
