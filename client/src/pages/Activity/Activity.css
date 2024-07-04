@@ -1,0 +1,73 @@
+.all-activities-cards {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 8rem;
+}
+
+.global-div-activity {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.global-div-activity > h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: #96333e;
+}
+
+.activity-card {
+  border: solid 2px #96333e;
+  border-radius: 3rem;
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem;
+  width: 40vw;
+  height: 30vh;
+}
+
+.activity-info > h2 {
+  text-transform: uppercase;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.image-activity-card {
+  height: 20vh;
+  width: 15vw;
+  border-radius: 3rem;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  margin-bottom: 3rem;
+  margin-right: 1rem;
+}
+
+.activity-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80rem;
+}
+
+.activity-info > p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.global-button-activity {
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 3rem;
+  margin-right: 1rem;
+}
+.button-participate {
+  background-color: #96333e;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.activity-description {
+  word-wrap: break-word;
+  max-width: 15rem;
+}
