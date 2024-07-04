@@ -71,3 +71,19 @@
   word-wrap: break-word;
   max-width: 15rem;
 }
+
+.select-activities {
+  width: 8vw;
+  background-color: #fff4f4;
+}
+
+.div-select-activity {
+  display: flex;
+  align-items: flex-end;
+}
+
+.option-select-activity {
+  color: black;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+}

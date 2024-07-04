@@ -28,7 +28,7 @@ create table user (
 
 create table activity ( 
   id INT unsigned PRIMARY KEY auto_increment NOT NULL,
-  name VARCHAR(255) NOT NULL,
+  title VARCHAR(255) NOT NULL,
   description TEXT, 
   date DATE NOT NULL,
   time TIME NOT NULL,
