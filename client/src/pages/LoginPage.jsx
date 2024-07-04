@@ -18,9 +18,11 @@ export default function LoginPage() {
         "http://localhost:3310/api/auth/login",
         data
       );
-      console.info(response);
 
-      setCurrentUser(response.data.user);
+      const info = await response.data;
+      console.info(info.user);
+
+      setCurrentUser(info.user);
     } catch (e) {
       console.error(e);
     }

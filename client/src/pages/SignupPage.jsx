@@ -8,6 +8,7 @@ export default function SignupPage() {
 
   const onSubmit = async (data) => {
     try {
+      console.info(data);
       await axios.post("http://localhost:3310/api/users", data);
     } catch (e) {
       console.error(e);
@@ -126,7 +127,7 @@ export default function SignupPage() {
           <select
             className="appearance-none block w-full bg-red-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
             name="service"
-            {...register("serviceId", { required: "required" })}
+            {...register("service_id", { required: "required" })}
           >
             <option value="">Select Service</option>
             <option value="1">Commercial</option>
