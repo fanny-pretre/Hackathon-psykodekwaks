@@ -1,3 +1,4 @@
+-- SQLBook: Code
 create table role (
   id INT unsigned PRIMARY KEY auto_increment NOT NULL,
   name VARCHAR(255) NOT NULL
@@ -32,6 +33,7 @@ create table activity (
   date DATE NOT NULL,
   time TIME NOT NULL,
   image VARCHAR(250) NOT NULL,
+  place VARCHAR(250) NOT NULL,
   is_corporate BOOL, 
   user_id INT UNSIGNED NOT NULL,
   activity_type_id INT UNSIGNED NOT NULL, 

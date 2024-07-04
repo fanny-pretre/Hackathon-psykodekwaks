@@ -9,13 +9,12 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Activity from "./pages/Activity";
-import ActivityAdd from "./pages/ActivityAdd";
+
+import Activity from "./pages/Activity/Activity";
+import ActivityAdd from "./pages/ActivityAdd/ActivityAdd";
 import Administrateur from "./pages/Administrateur";
 import UserManagement from "./pages/UserManagement";
 import UserInformation from "./pages/UserInformation";
-
-
 
 const activityAddLoader = async () => {
   try {
