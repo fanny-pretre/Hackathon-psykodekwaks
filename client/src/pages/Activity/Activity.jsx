@@ -43,6 +43,10 @@ function Activity() {
                   </span>
                   <p>{activity.place}</p>
                   <p className="activity-description">{activity.description}</p>
+                  <p>
+                    Pour plus d'info contactez : <br /> {activity.firstname}{" "}
+                    {activity.lastname}
+                  </p>
                 </div>
                 <div className="global-button-activity">
                   <button className="button-participate" type="submit">
