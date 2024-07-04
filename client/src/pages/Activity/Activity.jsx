@@ -7,10 +7,10 @@ function Activity() {
   const [activityType, setActivityType] = useState("");
 
   return (
-    <body>
-      <div className="input-label-activity-add">
-        <label htmlFor="activitytype">Choisissez le type d'activité</label>
+    <>
+      <div className="div-select-activity">
         <select
+          className="select-activities"
           id="activitytype"
           name="activitytype"
           onChange={(e) => setActivityType(e.target.value)}
@@ -44,8 +44,8 @@ function Activity() {
                   <p>{activity.place}</p>
                   <p className="activity-description">{activity.description}</p>
                   <p>
-                    Pour plus d'info contactez : <br /> {activity.firstname}{" "}
-                    {activity.lastname}
+                    Pour plus d'information contactez : <br />{" "}
+                    {activity.firstname} {activity.lastname}
                   </p>
                 </div>
                 <div className="global-button-activity">
@@ -57,7 +57,7 @@ function Activity() {
             ))}
         </section>
       </div>
-    </body>
+    </>
   );
 }
 
