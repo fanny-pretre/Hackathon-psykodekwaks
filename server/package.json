@@ -9,11 +9,8 @@
     "test": "jest"
   },
   "dependencies": {
-<<<<<<< HEAD
     "cookie-parser": "^1.4.6",
-=======
     "axios": "^1.7.2",
->>>>>>> 7a15be4ccaecdca56908e3b9e3fbff6d8efcc560
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
