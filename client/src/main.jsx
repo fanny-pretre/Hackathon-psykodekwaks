@@ -1,6 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import axios from "axios";
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 
@@ -14,6 +13,7 @@ import ActivityAdd from "./pages/ActivityAdd";
 import Administrateur from "./pages/Administrateur";
 import UserManagement from "./pages/UserManagement";
 import UserInformation from "./pages/UserInformation";
+import ActivityManagement from "./pages/ActityManagement";
 
 
 const activityAddLoader = async () => {
@@ -87,6 +87,16 @@ const router = createBrowserRouter([
         loader: async () => {
           const response = await axios.get(
             `${import.meta.env.VITE_API_URL}/api/users/`
+          );
+          return response.data;
+        },
+      },
+      {
+        path: "/admin/activitegestion",
+        element: <ActivityManagement />,
+        loader: async () => {
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/api/activities/`
           );
           return response.data;
         },

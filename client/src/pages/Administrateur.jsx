@@ -8,22 +8,24 @@ function Administrateur() {
     console.info(user)
 
     return (
-        <>
-            <h1> Page Administrateur </h1>
-            <Link to={`/admin/utilisateur/${user.id}`}>
-                <p> Mes informations </p>
-            </Link>
+        <section className="w-screen h-screen flex justify-center">
+            <div className="text-center">
+                <h1> Page Administrateur </h1>
+                <Link to={`/admin/utilisateur/${user.id}`}>
+                    <p> Mes informations </p>
+                </Link>
 
-            <Link to="/admin/utilisateurgestion">
-                <p> Gestion des utilisateurs</p>
-            </Link>
-            <Link to="/admin/activitegestion">
-                <p> Gérer des activités</p>
-            </Link>
+                <Link to="/admin/utilisateurgestion">
+                    <p> Gestion des utilisateurs</p>
+                </Link>
+                <Link to="/admin/activitegestion">
+                    <p> Gérer des activités</p>
+                </Link>
 
-            <p> Se déconnecter</p>
+                <p> Se déconnecter</p>
+            </div>
+        </section>
 
-        </>
     );
 }
 
