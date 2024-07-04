@@ -25,7 +25,10 @@ class ActivityRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select * from ${this.table} where id = ?`,
+      `select activity.*, activity_type.name
+      from ${this.table} 
+      inner join activity_type on activity_type.id=activity.activity_type_id
+      where activity.id = ?`,
       [id]
     );
     return rows[0];
