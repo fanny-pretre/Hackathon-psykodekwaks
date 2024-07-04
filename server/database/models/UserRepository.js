@@ -28,7 +28,11 @@ class UserRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(
+      `SELECT user.*, service.name s_name, role.name r_name
+      FROM ${this.table} AS user
+      JOIN service ON user.service_id = service.id
+      JOIN role ON user.role_id = role.id`);
     return rows;
   }
 
@@ -42,7 +46,7 @@ class UserRepository extends AbstractRepository {
       [user.firstname, user.lastname, user.email, user.password, id]
     );
 
-    // Return how many rows were affected
+
     console.info(result.affectedRows);
     return result.affectedRows;
   }
