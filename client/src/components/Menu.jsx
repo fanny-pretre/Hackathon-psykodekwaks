@@ -2,31 +2,49 @@
 import { Link } from "react-router-dom";
 
 function Menu({ currentUser }) {
-  console.info(currentUser);
   return (
-    <ul>
-      <Link to="/">
-        <li className="menu-li">Accueil</li>
-      </Link>
-      <Link to="/activities">
-        <li className="menu-li"> Toutes les activités</li>
-      </Link>
-      <Link to="/activityadd">
-        <li className="menu-li">Proposer une activité</li>
-      </Link>
-      <Link to={`/admin/${currentUser?.id}`}>
-        <li className="menu-li">Profil</li>
-      </Link>
-      <Link to="/signup">
-        <li className="menu-li">Inscription</li>
-      </Link>
-      <Link to="/login">
-        <li className="menu-li">Connexion</li>
-      </Link>
-      <Link to="/logout">
-        <li className="menu-li">Déconnexion</li>
-      </Link>
-    </ul>
+    <nav className="bg-gradient-to-r from-red-400 to-red-900 p-4 shadow-lg">
+      <div className="container mx-auto flex justify-between items-center">
+        <div className="text-white text-2xl font-bold">Connect</div>
+        <ul className="flex space-x-6">
+          <Link to="/">
+            <li className="text-white hover:text-white transition-colors duration-300">
+              Accueil
+            </li>
+          </Link>
+          <Link to="/activities">
+            <li className="text-white hover:text-white transition-colors duration-300">
+              Toutes les activités
+            </li>
+          </Link>
+          <Link to="/activityadd">
+            <li className="text-white hover:text-white transition-colors duration-300">
+              Proposer une activité
+            </li>
+          </Link>
+          <Link to={`/admin/${currentUser?.id}`}>
+            <li className="text-white hover:text-white transition-colors duration-300">
+              Profil
+            </li>
+          </Link>
+          <Link to="/signup">
+            <li className="text-white hover:text-white transition-colors duration-300">
+              Inscription
+            </li>
+          </Link>
+          <Link to="/login">
+            <li className="text-white hover:text-white transition-colors duration-300">
+              Connexion
+            </li>
+          </Link>
+          <Link to="/logout">
+            <li className="text-white hover:text-white transition-colors duration-300">
+              Déconnexion
+            </li>
+          </Link>
+        </ul>
+      </div>
+    </nav>
   );
 }
 
