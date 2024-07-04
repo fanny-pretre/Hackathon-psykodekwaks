@@ -1,27 +1,35 @@
-/* eslint-disable import/no-extraneous-dependencies */
+// eslint-disable-next-line import/no-extraneous-dependencies
 import axios from "axios";
+
+import "./Index.css";
+
 import React from "react";
 import ReactDOM from "react-dom/client";
 
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import {
+  createBrowserRouter,
+  redirect,
+  RouterProvider,
+} from "react-router-dom";
 
 import App from "./App";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import LogoutPage from "./pages/LogoutPage";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Activity from "./pages/Activity";
-import ActivityAdd from "./pages/ActivityAdd";
+import Activity from "./pages/Activity/Activity";
+import ActivityAdd from "./pages/ActivityAdd/ActivityAdd";
 import Administrateur from "./pages/Administrateur";
 import UserManagement from "./pages/UserManagement";
 import UserInformation from "./pages/UserInformation";
-import ActivityManagement from "./pages/ActityManagement";
-
 
 const activityAddLoader = async () => {
   try {
-    const [activityTypesResponse, usersResponse, activitiesResponse] = await Promise.all([
-      axios.get(`${import.meta.env.VITE_API_URL}/api/activitytypes`),
-      axios.get(`${import.meta.env.VITE_API_URL}/api/users`),
-    ]);
+    const [activityTypesResponse, usersResponse, activitiesResponse] =
+      await Promise.all([
+        axios.get(`${import.meta.env.VITE_API_URL}/api/activitytypes`),
+        axios.get(`${import.meta.env.VITE_API_URL}/api/users`),
+      ]);
 
     return {
       activityTypes: activityTypesResponse.data,
@@ -39,6 +47,18 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        path: "/signup",
+        element: <SignupPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/logout",
+        element: <LogoutPage />,
+      },
+      {
         path: "/",
         element: <Home />,
       },
@@ -53,20 +73,16 @@ const router = createBrowserRouter([
         },
       },
       {
-        path: "/login",
-        element: <Login />,
-      },
-      {
         path: "/activityadd",
         element: <ActivityAdd />,
         loader: activityAddLoader,
       },
       {
-        path: "/admin",
+        path: "/admin/:id",
         element: <Administrateur />,
-        loader: async () => {
+        loader: async ({ params }) => {
           const response = await axios.get(
-            `${import.meta.env.VITE_API_URL}/api/users/`
+            `${import.meta.env.VITE_API_URL}/api/users/${params.id}`
           );
           return response.data;
         },
@@ -80,6 +96,35 @@ const router = createBrowserRouter([
           );
           return response.data;
         },
+        action: async ({ request, params }) => {
+          const formData = await request.formData();
+          console.info(request.method);
+          switch (request.method.toLowerCase()) {
+            case "put": {
+              await axios.put(
+                `${import.meta.env.VITE_API_URL}/api/users/${params.id}`,
+                {
+                  firstname: formData.get("firstname"),
+                  lastname: formData.get("lastname"),
+                  email: formData.get("email"),
+                  password: formData.get("password"),
+                }
+              );
+
+              return redirect(`/admin/${params.id}`);
+            }
+            case "delete": {
+              await axios.delete(
+                `${import.meta.env.VITE_API_URL}/api/users/${params.id}`
+              );
+
+              return redirect(`/`);
+            }
+
+            default:
+              throw new Response("", { status: 405 });
+          }
+        },
       },
       {
         path: "/admin/utilisateurgestion",
@@ -87,16 +132,6 @@ const router = createBrowserRouter([
         loader: async () => {
           const response = await axios.get(
             `${import.meta.env.VITE_API_URL}/api/users/`
-          );
-          return response.data;
-        },
-      },
-      {
-        path: "/admin/activitegestion",
-        element: <ActivityManagement />,
-        loader: async () => {
-          const response = await axios.get(
-            `${import.meta.env.VITE_API_URL}/api/activities/`
           );
           return response.data;
         },

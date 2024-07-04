@@ -12,7 +12,9 @@ const browse = async (req, res, next) => {
 
 const read = async (req, res, next) => {
   try {
-    const user = await tables.user.read(req.params.id);
+    const { id } = req.params;
+    // Fetch a specific user from the database based on the provided ID
+    const user = await tables.user.read(+id);
 
     if (user == null) {
       res.sendStatus(404);
@@ -43,7 +45,9 @@ const add = async (req, res, next) => {
   try {
     const insertId = await tables.user.create(user);
 
-    res.status(201).json({ insertId });
+
+    // Respond with HTTP 201 (Created) and the ID of the newly inserted user
+    res.status(201).json({ insertId, message: "Bienvenue sur le site" });
   } catch (err) {
     next(err);
   }

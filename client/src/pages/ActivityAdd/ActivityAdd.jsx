@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
+import "./activity-add.css";
+
 function ActivityAdd() {
   const navigate = useNavigate();
 
   const { activityTypes, users } = useLoaderData();
+  console.info(users);
 
   // State variables to hold form data
   const [userId, setUserId] = useState("");
@@ -51,18 +54,18 @@ function ActivityAdd() {
   };
 
   return (
-    <section>
+    <section className="activity-add">
       <h1>Proposez une activité !</h1>
 
-      <form onSubmit={onSubmit}>
-        <div>
-          <label htmlFor="username">Qui êtes vous ?</label>
+      <form className="form-activity-add" onSubmit={onSubmit}>
+        <div className="input-label-activity-add">
+          <label htmlFor="username">Qui propose cette activité</label>
           <select
             id="username"
             name="username"
             onChange={(e) => setUserId(e.target.value)}
           >
-            <option value="">Choisissez le type d'activité</option>
+            <option value="">Choisissez qui propose l'activité</option>
 
             {users.map((user) => (
               <option key={user.id} value={user.id}>
@@ -71,7 +74,7 @@ function ActivityAdd() {
             ))}
           </select>
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="activityname">Le nom de votre activité</label>
           <input
             type="text"
@@ -81,7 +84,7 @@ function ActivityAdd() {
             onChange={(e) => setActivityName(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="place">Où aura lieu votre activité ?</label>
           <input
             type="text"
@@ -91,7 +94,7 @@ function ActivityAdd() {
             onChange={(e) => setPlace(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="date">Quand aura lieu votre activité ?</label>
           <input
             type="date"
@@ -101,7 +104,7 @@ function ActivityAdd() {
             onChange={(e) => setDate(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="time">
             À quelle heure aura lieu votre activité ?
           </label>
@@ -113,7 +116,7 @@ function ActivityAdd() {
             onChange={(e) => setTime(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="activitytype">Choisissez le type d'activité</label>
           <select
             id="activitytype"
@@ -129,7 +132,7 @@ function ActivityAdd() {
             ))}
           </select>
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="activitydesc">
             Dites-nous en plus sur votre activité !
           </label>
@@ -141,7 +144,7 @@ function ActivityAdd() {
             onChange={(e) => setActivityDesc(e.target.value)}
           />
         </div>
-        <div>
+        <div className="input-label-activity-add">
           <label htmlFor="image">Lien de l'image</label>
           <input
             type="text"
@@ -152,7 +155,9 @@ function ActivityAdd() {
           />
         </div>
 
-        <button type="submit">Proposer cette activité</button>
+        <button className="button-activity-add" type="submit">
+          Proposer cette activité
+        </button>
       </form>
     </section>
   );

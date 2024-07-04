@@ -1,0 +1,61 @@
+.activity-add {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff4f4;
+  justify-content: center;
+  align-items: center;
+  width: 50vw;
+  border: solid 2px #96333e;
+  margin: auto;
+  margin-top: 5rem;
+  border-radius: 2rem;
+}
+
+.activity-add > h1 {
+  color: #96333e;
+  font-size: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.input-label-activity-add {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 1rem;
+  margin: 2rem;
+}
+
+.button-activity-add {
+  background-color: #96333e;
+  color: white;
+  margin-left: 11rem;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.input-label-activity-add > input {
+  background-color: #d9d9d9;
+  border: solid 2px #96333e;
+  height: 4vh;
+  font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
+}
+
+.input-label-activity-add > select {
+  background-color: #d9d9d9;
+  border: solid 2px #96333e;
+  height: 4vh;
+  font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.input-label-activity-add > label {
+  color: #96333e;
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
