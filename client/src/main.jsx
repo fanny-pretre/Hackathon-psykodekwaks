@@ -9,7 +9,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Activity from "./pages/Activity";
+import Activity from "./pages/Activity/Activity";
 import ActivityAdd from "./pages/ActivityAdd/ActivityAdd";
 
 const activityAddLoader = async () => {

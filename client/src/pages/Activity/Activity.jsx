@@ -1,3 +1,5 @@
+import "./Activity.css";
+
 import { useLoaderData } from "react-router-dom";
 
 function Activity() {
@@ -7,7 +9,13 @@ function Activity() {
     <div>
       <h1> Bonjour je suis Activity</h1>;
       {activities.map((activity) => (
-        <p key={activity.id}>{activity.name}</p>
+        <article key={activity.id}>
+          <h2>{activity.name}</h2>
+          <span>
+            {activity.date} {activity.time}
+          </span>
+          <p>{activity.description}</p>
+        </article>
       ))}
     </div>
   );
