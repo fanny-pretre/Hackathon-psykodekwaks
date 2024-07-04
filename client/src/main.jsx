@@ -16,6 +16,7 @@ import UserManagement from "./pages/UserManagement";
 import UserInformation from "./pages/UserInformation";
 
 
+
 const activityAddLoader = async () => {
   try {
     const [activityTypesResponse, usersResponse, activitiesResponse] = await Promise.all([
