@@ -13,8 +13,10 @@ import {
 } from "react-router-dom";
 
 import App from "./App";
+import LoginPage from "./pages/LoginPage";
+import SignupPage from "./pages/SignupPage";
+import LogoutPage from "./pages/LogoutPage";
 import Home from "./pages/Home";
-import Login from "./pages/Login";
 import Activity from "./pages/Activity/Activity";
 import ActivityAdd from "./pages/ActivityAdd/ActivityAdd";
 import Administrateur from "./pages/Administrateur";
@@ -45,6 +47,18 @@ const router = createBrowserRouter([
     element: <App />,
     children: [
       {
+        path: "/signup",
+        element: <SignupPage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/logout",
+        element: <LogoutPage />,
+      },
+      {
         path: "/",
         element: <Home />,
       },
@@ -57,10 +71,6 @@ const router = createBrowserRouter([
           );
           return response.data;
         },
-      },
-      {
-        path: "/login",
-        element: <Login />,
       },
       {
         path: "/activityadd",
