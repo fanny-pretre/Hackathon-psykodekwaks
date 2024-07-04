@@ -1,0 +1,15 @@
+.navbar {
+  display: flex;
+  flex-direction: row;
+  background-color: #96333d;
+  color: #f5f0f0;
+}
+
+.img-nav {
+  height: auto;
+  width: 7rem;
+}
+
+.li {
+  text-decoration: none;
+}

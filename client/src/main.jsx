@@ -16,7 +16,8 @@ import App from "./App";
 import LoginPage from "./pages/LoginPage";
 import SignupPage from "./pages/SignupPage";
 import LogoutPage from "./pages/LogoutPage";
-import Home from "./pages/Home";
+import Home from "./pages/Home/Home";
+
 import Activity from "./pages/Activity/Activity";
 import ActivityAdd from "./pages/ActivityAdd/ActivityAdd";
 import Administrateur from "./pages/Administrateur";
@@ -25,20 +26,18 @@ import UserInformation from "./pages/UserInformation";
 
 const activityAddLoader = async () => {
   try {
-    const [activityTypesResponse, usersResponse, activitiesResponse] =
-      await Promise.all([
-        axios.get(`${import.meta.env.VITE_API_URL}/api/activitytypes`),
-        axios.get(`${import.meta.env.VITE_API_URL}/api/users`),
-      ]);
+    const [activityTypesResponse, usersResponse] = await Promise.all([
+      axios.get(`${import.meta.env.VITE_API_URL}/api/activitytypes`),
+      axios.get(`${import.meta.env.VITE_API_URL}/api/users`),
+    ]);
 
     return {
       activityTypes: activityTypesResponse.data,
       users: usersResponse.data,
-      activities: activitiesResponse.data,
     };
   } catch (error) {
     console.error("Error loading activity types or users:", error);
-    return { activityTypes: [], users: [], activities: [] };
+    return { activityTypes: [], users: [] };
   }
 };
 
