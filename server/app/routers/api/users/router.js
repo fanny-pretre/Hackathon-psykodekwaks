@@ -15,6 +15,9 @@ const {
   deleteUser,
 } = require("../../../controllers/userActions");
 
+const validateUser = require("../../../services/Validation/userValidation");
+const hashPassword = require("../../../services/hashPassword");
+
 // Route to get a list of items
 router.get("/", browse);
 
@@ -24,7 +27,7 @@ router.get("/:id", read);
 router.put("/:id", edit);
 
 // Route to add a new item
-router.post("/", add);
+router.post("/", validateUser, hashPassword, add);
 
 router.delete("/:id", deleteUser);
 

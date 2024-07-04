@@ -7,8 +7,8 @@ class RoleRepository extends AbstractRepository {
 
   async create(role) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (role) values (?)`,
-      [role.roles]
+      `insert into ${this.table} (name) values (?)`,
+      [role.name]
     );
     return result.insertId;
   }
