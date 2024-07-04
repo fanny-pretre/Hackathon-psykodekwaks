@@ -4,7 +4,7 @@ import { useLoaderData } from 'react-router-dom';
 
 function UserManagement() {
     const users = useLoaderData();
-    const [editUserId, setEditUserId] = useState(false);
+    const [editUserId, setEditUserId] = useState(null);
     const [editUserData, setEditUserData] = useState({
         firstname: '',
         lastname: '',
@@ -32,7 +32,7 @@ function UserManagement() {
 
     const handleEditSubmit = async ({ id }) => {
         try {
-            const response = await fetch(`/api/users/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -44,23 +44,21 @@ function UserManagement() {
                 throw new Error('Failed to update user');
             }
 
-            setEditUserId(false);
-            setEditUserData({
-                firstname: '',
-                lastname: '',
-                email: '',
-                password: '',
-            });
+            setEditUserData();
+            setEditUserId(null);
+
+            // Reload the page after successful update
+            window.location.reload();
         } catch (error) {
             console.error('Error updating user:', error);
-            setEditUserId(false);
+            setEditUserId(null);
         }
-
     };
+
 
     const handleDelete = async (id) => {
         try {
-            const response = await fetch(`/api/users/${id}`, {
+            const response = await fetch(`${import.meta.env.VITE_API_URL}/api/users/${id}`, {
                 method: 'DELETE',
             });
 
