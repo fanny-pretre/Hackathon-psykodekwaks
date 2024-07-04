@@ -7,13 +7,14 @@ class ActivityRepository extends AbstractRepository {
 
   async create(activity) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (name, description, date, time, image, is_corporate, user_id, activity_type_id) values (?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (name, description, date, time, image, place, is_corporate, user_id, activity_type_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         activity.name,
         activity.description,
         activity.date,
         activity.time,
         activity.image,
+        activity.place,
         activity.is_corporate,
         activity.user_id,
         activity.activity_type_id,

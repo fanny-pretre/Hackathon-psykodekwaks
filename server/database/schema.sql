@@ -1,3 +1,4 @@
+-- SQLBook: Code
 create table role (
     id INT unsigned PRIMARY KEY auto_increment NOT NULL,
     name VARCHAR(255) NOT NULL DEFAULT "user"
@@ -26,6 +27,7 @@ create table user (
 );
 
 create table activity (
+<<<<<<< HEAD
     id INT unsigned PRIMARY KEY auto_increment NOT NULL,
     name VARCHAR(255) NOT NULL,
     description TEXT,
@@ -37,6 +39,20 @@ create table activity (
     activity_type_id INT UNSIGNED NOT NULL,
     FOREIGN KEY (user_id) REFERENCES user (id) ON DELETE CASCADE,
     FOREIGN KEY (activity_type_id) REFERENCES activity (id) ON DELETE CASCADE
+=======
+  id INT unsigned PRIMARY KEY auto_increment NOT NULL,
+  name VARCHAR(255) NOT NULL,
+  description TEXT, 
+  date DATE NOT NULL,
+  time TIME NOT NULL,
+  image VARCHAR(250) NOT NULL,
+  place VARCHAR(250) NOT NULL,
+  is_corporate BOOL, 
+  user_id INT UNSIGNED NOT NULL,
+  activity_type_id INT UNSIGNED NOT NULL, 
+  FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE,
+  FOREIGN KEY(activity_type_id) REFERENCES activity(id) ON DELETE CASCADE
+>>>>>>> 7a15be4ccaecdca56908e3b9e3fbff6d8efcc560
 );
 
 create table participation (
