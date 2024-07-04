@@ -1,0 +1,43 @@
+.admin-container {
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-header {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.admin-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+  margin: 10px 0;
+}
+
+.admin-link p {
+  color: black;
+  font-weight: 700;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+.admin-link p:hover {
+  cursor: pointer;
+}
+
+.admin-logout {
+  margin-top: 20px;
+  font-weight: bold;
+  color: #d9534f;
+  cursor: pointer;
+}
