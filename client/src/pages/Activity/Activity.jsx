@@ -1,4 +1,3 @@
-import "./Activity.css";
 import { useState } from "react";
 import { useLoaderData } from "react-router-dom";
 
@@ -8,15 +7,14 @@ function Activity() {
 
   return (
     <>
-      <div className="div-select-activity">
+      <div className="flex justify-center my-8">
         <select
-          className="select-activities"
+          className="block w-1/3 px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-red-400 focus:border-blue-400"
           id="activitytype"
           name="activitytype"
           onChange={(e) => setActivityType(e.target.value)}
         >
           <option value="">Choisissez le type d'activité</option>
-
           {activities.map((activity) => (
             <option key={activity.activity_type_id} value={activity.name}>
               {activity.name}
@@ -24,32 +22,45 @@ function Activity() {
           ))}
         </select>
       </div>
-      <div className="global-div-activity">
-        <h1>Les activités disponibles</h1>;
-        <section className="all-activities-cards">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h1 className="text-3xl font-bold text-gray-800 mb-8">
+          Les activités disponibles
+        </h1>
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {activities
-            .filter((activity) => activity.name === activityType)
+            .filter(
+              (activity) =>
+                activityType === "" || activity.name === activityType
+            )
             .map((activity) => (
-              <article className="activity-card" key={activity.id}>
+              <article
+                className="bg-white shadow-lg rounded-lg overflow-hidden"
+                key={activity.id}
+              >
                 <img
-                  className="image-activity-card"
+                  className="w-full h-48 object-cover"
                   src="https://img.freepik.com/photos-gratuite/jetee-au-bord-lac-hallstatt-autriche_181624-44201.jpg"
                   alt="paysage"
                 />
-                <div className="activity-info">
-                  <h2>{activity.title}</h2>
-                  <span>
+                <div className="p-6">
+                  <h2 className="text-2xl font-bold text-gray-800">
+                    {activity.title}
+                  </h2>
+                  <span className="text-gray-600">
                     {activity.date} {activity.time}
                   </span>
-                  <p>{activity.place}</p>
-                  <p className="activity-description">{activity.description}</p>
-                  <p>
-                    Pour plus d'information contactez : <br />{" "}
+                  <p className="text-gray-600 mt-2">{activity.place}</p>
+                  <p className="text-gray-600 mt-2">{activity.description}</p>
+                  <p className="text-gray-600 mt-2">
+                    Pour plus d'information contactez : <br />
                     {activity.firstname} {activity.lastname}
                   </p>
                 </div>
-                <div className="global-button-activity">
-                  <button className="button-participate" type="submit">
+                <div className="p-6 flex justify-center">
+                  <button
+                    className="bg-red-400 text-white px-4 py-2 rounded hover:bg-red-600 transition duration-300"
+                    type="submit"
+                  >
                     PARTICIPER
                   </button>
                 </div>
