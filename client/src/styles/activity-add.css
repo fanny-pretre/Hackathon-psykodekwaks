@@ -14,6 +14,7 @@
 .activity-add > h1 {
   color: #96333e;
   font-size: 2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .input-label-activity-add {
@@ -27,7 +28,7 @@
 .button-activity-add {
   background-color: #96333e;
   color: white;
-  margin-left: 7rem;
+  margin-left: 11rem;
   margin-bottom: 2rem;
   padding: 2rem;
   border-radius: 1rem;
@@ -39,6 +40,7 @@
   border: solid 2px #96333e;
   height: 4vh;
   font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .input-label-activity-add > select {
@@ -46,10 +48,12 @@
   border: solid 2px #96333e;
   height: 4vh;
   font-size: 1.2rem;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .input-label-activity-add > label {
   color: #96333e;
   font-size: 1.5rem;
   font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
