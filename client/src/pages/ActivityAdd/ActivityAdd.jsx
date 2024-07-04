@@ -64,7 +64,7 @@ function ActivityAdd() {
             name="username"
             onChange={(e) => setUserId(e.target.value)}
           >
-            <option value="">Choisissez le type d'activité</option>
+            <option value="">Choisissez qui propose l'activité</option>
 
             {users.map((user) => (
               <option key={user.id} value={user.id}>

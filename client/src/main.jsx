@@ -15,7 +15,7 @@ import {
 import App from "./App";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
-import Activity from "./pages/Activity";
+import Activity from "./pages/Activity/Activity";
 import ActivityAdd from "./pages/ActivityAdd/ActivityAdd";
 import Administrateur from "./pages/Administrateur";
 import UserManagement from "./pages/UserManagement";
