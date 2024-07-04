@@ -15,7 +15,9 @@ function Activity() {
           name="activitytype"
           onChange={(e) => setActivityType(e.target.value)}
         >
-          <option value="">Choisissez le type d'activité</option>
+          <option className="option-select-activity" value="">
+            Choisissez le type d'activité
+          </option>
 
           {activities.map((activity) => (
             <option key={activity.activity_type_id} value={activity.name}>
