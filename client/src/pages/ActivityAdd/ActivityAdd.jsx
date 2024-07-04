@@ -7,6 +7,7 @@ function ActivityAdd() {
   const navigate = useNavigate();
 
   const { activityTypes, users } = useLoaderData();
+  console.info(users);
 
   // State variables to hold form data
   const [userId, setUserId] = useState("");

@@ -6,16 +6,10 @@ class UserRepository extends AbstractRepository {
   }
 
   async create(user) {
+    const { email, password, firstName, lastName, serviceId } = user;
     const [result] = await this.database.query(
-      `insert into ${this.table} (email, password, firstname, lastname, role_id, service_id) values (?, ?, ?, ?, ?, ?)`,
-      [
-        user.email,
-        user.password,
-        user.firstname,
-        user.lastname,
-        user.role_id,
-        user.service_id,
-      ]
+      `insert into ${this.table} (email, password, firstname, lastname, role_id, service_id) values (?, ?, ?, ?, 1, ?)`,
+      [email, password, firstName, lastName, serviceId]
     );
     return result.insertId;
   }
@@ -29,19 +23,32 @@ class UserRepository extends AbstractRepository {
       WHERE user.id = ?`,
       [id]
     );
+
     return rows[0];
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(
+      `SELECT user.*, service.name s_name, role.name r_name
+      FROM ${this.table} AS user
+      JOIN service ON user.service_id = service.id
+      JOIN role ON user.role_id = role.id`);
     return rows;
   }
 
-  async update(id, updatedService) {
-    const query = `
-    update ${this.table} set ? where id = ?`;
-    const [result] = await this.database.query(query, [updatedService, id]);
-    return result.affectedRows > 0;
+  // The U of CRUD - Update operation
+  async update(id, user) {
+    // Execute the SQL UPDATE query to update a specific user
+
+    const [result] = await this.database.query(
+      `update ${this.table} set firstname = ?, lastname = ?, email = ?, password = ? where id = ?`,
+
+      [user.firstname, user.lastname, user.email, user.password, id]
+    );
+
+
+    console.info(result.affectedRows);
+    return result.affectedRows;
   }
 
   async delete(id) {
@@ -49,6 +56,15 @@ class UserRepository extends AbstractRepository {
     delete from ${this.table} where id = ?`;
     const [result] = await this.database.query(query, [id]);
     return result.affectedRows > 0;
+  }
+
+  async findUserByEmail(email) {
+    const [result] = await this.database.query(
+      `SELECT * FROM ${this.table} WHERE email = ?`,
+      [email]
+    );
+
+    return result;
   }
 }
 

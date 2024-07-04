@@ -25,7 +25,7 @@ const read = async (req, res, next) => {
 
 const edit = async (req, res, next) => {
   try {
-    const affectedRows = await tables.service.edit(req.params.id, req.body);
+    const affectedRows = await tables.service.update(req.params.id, req.body);
     if (affectedRows > 0) {
       res.json({ message: "Service updated successfully" });
     } else {
