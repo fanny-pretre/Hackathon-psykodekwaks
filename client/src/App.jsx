@@ -10,7 +10,6 @@ function App() {
   return (
     <main>
       <Menu currentUser={currentUser} />
-      <p>Vous êtes connecté {currentUser?.firstname}</p>
       <Outlet context={{ currentUser, setCurrentUser }} />
     </main>
   );
