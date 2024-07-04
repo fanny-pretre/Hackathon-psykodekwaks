@@ -11,10 +11,14 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Activity from "./pages/Activity";
 import ActivityAdd from "./pages/ActivityAdd";
+import Administrateur from "./pages/Administrateur";
+import UserManagement from "./pages/UserManagement";
+import UserInformation from "./pages/UserInformation";
+
 
 const activityAddLoader = async () => {
   try {
-    const [activityTypesResponse, usersResponse] = await Promise.all([
+    const [activityTypesResponse, usersResponse, activitiesResponse] = await Promise.all([
       axios.get(`${import.meta.env.VITE_API_URL}/api/activitytypes`),
       axios.get(`${import.meta.env.VITE_API_URL}/api/users`),
     ]);
@@ -22,10 +26,11 @@ const activityAddLoader = async () => {
     return {
       activityTypes: activityTypesResponse.data,
       users: usersResponse.data,
+      activities: activitiesResponse.data,
     };
   } catch (error) {
     console.error("Error loading activity types or users:", error);
-    return { activityTypes: [], users: [] };
+    return { activityTypes: [], users: [], activities: [] };
   }
 };
 
@@ -55,6 +60,36 @@ const router = createBrowserRouter([
         path: "/activityadd",
         element: <ActivityAdd />,
         loader: activityAddLoader,
+      },
+      {
+        path: "/admin",
+        element: <Administrateur />,
+        loader: async () => {
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/api/users/`
+          );
+          return response.data;
+        },
+      },
+      {
+        path: "/admin/utilisateur/:id",
+        element: <UserInformation />,
+        loader: async ({ params }) => {
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/api/users/${params.id}`
+          );
+          return response.data;
+        },
+      },
+      {
+        path: "/admin/utilisateurgestion",
+        element: <UserManagement />,
+        loader: async () => {
+          const response = await axios.get(
+            `${import.meta.env.VITE_API_URL}/api/users/`
+          );
+          return response.data;
+        },
       },
     ],
   },
