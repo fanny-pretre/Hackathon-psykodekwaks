@@ -7,9 +7,9 @@ class ActivityRepository extends AbstractRepository {
 
   async create(activity) {
     const [result] = await this.database.query(
-      `insert into ${this.table} (name, description, date, time, image, place, is_corporate, user_id, activity_type_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (title, description, date, time, image, place, is_corporate, user_id, activity_type_id) values (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
-        activity.name,
+        activity.title,
         activity.description,
         activity.date,
         activity.time,
@@ -25,7 +25,7 @@ class ActivityRepository extends AbstractRepository {
 
   async read(id) {
     const [rows] = await this.database.query(
-      `select activity.*, activity_type.name
+      `select activity.*, activity_type.name, activity_type.id
       from ${this.table} 
       inner join activity_type on activity_type.id=activity.activity_type_id
       where activity.id = ?`,
@@ -35,7 +35,12 @@ class ActivityRepository extends AbstractRepository {
   }
 
   async readAll() {
-    const [rows] = await this.database.query(`select * from ${this.table}`);
+    const [rows] = await this.database.query(
+      `select activity.*, activity_type.name, activity_type.id
+      from ${this.table} 
+      inner join activity_type on activity_type.id=activity.activity_type_id`
+    );
+
     return rows;
   }
 
