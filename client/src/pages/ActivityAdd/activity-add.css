@@ -34,6 +34,7 @@
   border-radius: 1rem;
   font-size: 1rem;
   font-weight: bold;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .input-label-activity-add > input {
   background-color: #d9d9d9;
@@ -41,6 +42,7 @@
   height: 4vh;
   font-size: 1.2rem;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: black;
 }
 
 .input-label-activity-add > select {

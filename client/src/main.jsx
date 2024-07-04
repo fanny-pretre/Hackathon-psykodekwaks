@@ -10,7 +10,7 @@ import App from "./App";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Activity from "./pages/Activity";
-import ActivityAdd from "./pages/ActivityAdd";
+import ActivityAdd from "./pages/ActivityAdd/ActivityAdd";
 
 const activityAddLoader = async () => {
   try {

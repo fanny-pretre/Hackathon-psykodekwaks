@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
 
-import "../styles/activity-add.css";
+import "./activity-add.css";
 
 function ActivityAdd() {
   const navigate = useNavigate();
