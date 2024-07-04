@@ -39,7 +39,7 @@ function Activity() {
               >
                 <img
                   className="w-full h-48 object-cover"
-                  src="https://img.freepik.com/photos-gratuite/jetee-au-bord-lac-hallstatt-autriche_181624-44201.jpg"
+                  src={activity.image}
                   alt="paysage"
                 />
                 <div className="p-6">

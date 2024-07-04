@@ -32,7 +32,7 @@ create table activity (
   description TEXT, 
   date DATE NOT NULL,
   time TIME NOT NULL,
-  image VARCHAR(250) NOT NULL,
+  image VARCHAR(250) NOT NULL DEFAULT "JPG",
   place VARCHAR(250) NOT NULL,
   is_corporate BOOL, 
   user_id INT UNSIGNED NOT NULL,
