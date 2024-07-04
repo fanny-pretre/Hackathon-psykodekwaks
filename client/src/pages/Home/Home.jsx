@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import home from "../../assets/images/home.jpg";
+import home2 from "../../assets/images/home2.jpg";
 
 function Home() {
   return (
@@ -7,7 +7,7 @@ function Home() {
       <div className="w-1/2 h-screen">
         <img
           className="w-full h-screen object-cover"
-          src={home}
+          src={home2}
           alt="groupe de personnes se rassemblant"
         />
       </div>

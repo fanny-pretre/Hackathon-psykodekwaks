@@ -39,7 +39,7 @@ export default function SignupPage() {
             id="firstname"
             type="text"
             placeholder="Jane"
-            {...register("firstname", {
+            {...register("firstName", {
               required: "Ce champ est requis",
               minLength: {
                 value: 2,
@@ -65,7 +65,7 @@ export default function SignupPage() {
             id="lastname"
             type="text"
             placeholder="Doe"
-            {...register("lastname", {
+            {...register("lastName", {
               required: "Ce champ est requis",
               minLength: {
                 value: 2,
