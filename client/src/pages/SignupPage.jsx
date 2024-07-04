@@ -4,7 +4,12 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 
 export default function SignupPage() {
-  const { register, handleSubmit, watch } = useForm();
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
     try {
@@ -17,119 +22,153 @@ export default function SignupPage() {
 
   return (
     <form
-      className="w-full max-w-lg mx-auto my-12"
+      className="w-full max-w-lg mx-auto my-12 bg-white p-8 rounded shadow-md"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-col -mx-3 mb-6">
-        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <h2 className="text-2xl font-bold mb-8 text-center">S'inscrire</h2>
+      <div className="grid grid-cols-1 gap-6">
+        <div>
           <label
-            className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+            className="block text-sm font-bold text-gray-700"
             htmlFor="firstname"
           >
-            First Name
+            Prénom
           </label>
           <input
-            className="appearance-none block w-full bg-red-200 text-black border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-first-name"
-            name="firstname"
+            className={`form-input mt-1 block w-full px-3 py-2 border ${errors.firstname ? "border-red-500" : "border-gray-300"} rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500`}
+            id="firstname"
             type="text"
             placeholder="Jane"
             {...register("firstname", {
-              minLength: 2,
-              required: "required",
+              required: "Ce champ est requis",
+              minLength: {
+                value: 2,
+                message: "Le prénom doit avoir au moins 2 caractères",
+              },
             })}
           />
+          {errors.firstname && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.firstname.message}
+            </p>
+          )}
         </div>
-        <div className="w-full md:w-1/2 px-3">
+        <div>
           <label
-            className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+            className="block text-sm font-bold text-gray-700"
             htmlFor="lastname"
           >
-            Last Name
+            Nom de famille
           </label>
           <input
-            className="appearance-none block w-full bg-red-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            name="lastname"
+            className={`form-input mt-1 block w-full px-3 py-2 border ${errors.lastname ? "border-red-500" : "border-gray-300"} rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500`}
+            id="lastname"
             type="text"
             placeholder="Doe"
             {...register("lastname", {
-              minLength: 2,
-              required: "required",
+              required: "Ce champ est requis",
+              minLength: {
+                value: 2,
+                message: "Le nom de famille doit avoir au moins 2 caractères",
+              },
             })}
           />
+          {errors.lastname && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.lastname.message}
+            </p>
+          )}
         </div>
-        <div className="w-full md:w-1/2 px-3">
+        <div>
           <label
-            className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+            className="block text-sm font-bold text-gray-700"
             htmlFor="email"
           >
             Email
           </label>
           <input
-            className="appearance-none block w-full bg-red-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            name="email"
+            className={`form-input mt-1 block w-full px-3 py-2 border ${errors.email ? "border-red-500" : "border-gray-300"} rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500`}
+            id="email"
             type="email"
-            placeholder="Doe"
+            placeholder="jane.doe@example.com"
             {...register("email", {
-              pattern: /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/,
-              required: "required",
+              required: "Ce champ est requis",
+              pattern: {
+                value: /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/,
+                message: "Adresse email invalide",
+              },
             })}
           />
+          {errors.email && (
+            <p className="text-red-500 text-xs mt-1">{errors.email.message}</p>
+          )}
         </div>
-        <div className="w-full md:w-1/2 px-3">
+        <div>
           <label
-            className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+            className="block text-sm font-bold text-gray-700"
             htmlFor="password"
           >
-            Password
+            Mot de passe
           </label>
           <input
-            className="appearance-none block w-full bg-red-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            name="password"
+            className={`form-input mt-1 block w-full px-3 py-2 border ${errors.password ? "border-red-500" : "border-gray-300"} rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500`}
+            id="password"
             type="password"
-            placeholder="*****"
+            placeholder="******"
             {...register("password", {
-              pattern:
-                /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/,
-              required: "required",
+              required: "Ce champ est requis",
+              pattern: {
+                value:
+                  /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/,
+                message:
+                  "Le mot de passe doit contenir entre 8 et 16 caractères, inclure au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial",
+              },
             })}
           />
+          {errors.password && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.password.message}
+            </p>
+          )}
         </div>
-        <div className="w-full md:w-1/2 px-3">
+        <div>
           <label
-            className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+            className="block text-sm font-bold text-gray-700"
             htmlFor="confirmpassword"
           >
-            Confirm Password
+            Confirmer le mot de passe
           </label>
           <input
-            className="appearance-none block w-full bg-red-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            name="confirmpassword"
+            className={`form-input mt-1 block w-full px-3 py-2 border ${errors.confirmpassword ? "border-red-500" : "border-gray-300"} rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500`}
+            id="confirmpassword"
             type="password"
             placeholder="******"
             {...register("confirmpassword", {
-              pattern:
-                /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/,
-              required: "required",
+              required: "Ce champ est requis",
               validate: (value) =>
                 value === watch("password") ||
                 "Les mots de passe ne correspondent pas",
             })}
           />
+          {errors.confirmpassword && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.confirmpassword.message}
+            </p>
+          )}
         </div>
-        <div className="w-full md:w-1/2 px-3">
+        <div>
           <label
-            className="block uppercase tracking-wide text-black text-xs font-bold mb-2"
+            className="block text-sm font-bold text-gray-700"
             htmlFor="service"
           >
             Service
           </label>
           <select
-            className="appearance-none block w-full bg-red-200 text-black border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-            name="service"
-            {...register("service_id", { required: "required" })}
+            className={`form-select mt-1 block w-full px-3 py-2 border ${errors.service_id ? "border-red-500" : "border-gray-300"} rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500`}
+            id="service"
+            {...register("service_id", { required: "Ce champ est requis" })}
           >
-            <option value="">Select Service</option>
+            <option value="">Sélectionner le service</option>
             <option value="1">Commercial</option>
             <option value="2">IT</option>
             <option value="3">Marketing</option>
@@ -140,9 +179,19 @@ export default function SignupPage() {
             <option value="8">RH</option>
             <option value="9">Direction</option>
           </select>
+          {errors.service_id && (
+            <p className="text-red-500 text-xs mt-1">
+              {errors.service_id.message}
+            </p>
+          )}
         </div>
       </div>
-      <button type="submit">S'inscrire</button>
+      <button
+        type="submit"
+        className="mt-4 bg-red-400 text-white py-2 px-4 rounded-md hover:bg-red-600 transition duration-300"
+      >
+        S'inscrire
+      </button>
     </form>
   );
 }

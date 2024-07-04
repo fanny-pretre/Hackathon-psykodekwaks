@@ -30,51 +30,64 @@ export default function LoginPage() {
 
   return (
     <form
-      className="w-full max-w-lg mx-auto my-12"
+      className="w-full max-w-md mx-auto my-12 bg-white p-8 rounded-lg shadow-md"
       onSubmit={handleSubmit(onSubmit)}
     >
-      <div className="flex flex-wrap -mx-3 mb-6">
-        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <h2 className="text-2xl font-bold mb-8 text-center">Se connecter</h2>
+      <div className="grid grid-cols-1 gap-6">
+        <div>
           <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block text-sm font-bold text-gray-700"
             htmlFor="email"
           >
             Email
           </label>
           <input
-            className="appearance-none block w-full bg-red-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-first-name"
+            className="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"
+            id="email"
             name="email"
             type="email"
-            placeholder="Jane@doe.fr"
+            placeholder="jane@doe.fr"
             {...register("email", {
-              pattern: /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/,
-              required: "required",
+              required: "Ce champ est requis",
+              pattern: {
+                value: /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/,
+                message: "Adresse email invalide",
+              },
             })}
           />
         </div>
-        <div className="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <div>
           <label
-            className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
+            className="block text-sm font-bold text-gray-700"
             htmlFor="password"
           >
-            Password
+            Mot de passe
           </label>
           <input
-            className="appearance-none block w-full bg-red-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-            id="grid-first-name"
+            className="form-input mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:border-blue-500 focus:ring-blue-500"
+            id="password"
             name="password"
             type="password"
-            placeholder="Jane"
+            placeholder="*****"
             {...register("password", {
-              pattern:
-                /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/,
-              required: "required",
+              required: "Ce champ est requis",
+              pattern: {
+                value:
+                  /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/,
+                message:
+                  "Le mot de passe doit contenir entre 8 et 16 caractères, inclure au moins une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial",
+              },
             })}
           />
         </div>
-        <button type="submit">Se connecter</button>
       </div>
+      <button
+        type="submit"
+        className="mt-6 w-full bg-red-400 text-white py-3 px-4 rounded-md hover:bg-red-600 transition duration-300"
+      >
+        Se connecter
+      </button>
     </form>
   );
 }
