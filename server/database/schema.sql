@@ -38,7 +38,7 @@ create table activity (
   user_id INT UNSIGNED NOT NULL,
   activity_type_id INT UNSIGNED NOT NULL, 
   FOREIGN KEY(user_id) REFERENCES user(id) ON DELETE CASCADE,
-  FOREIGN KEY(activity_type_id) REFERENCES activity(id) ON DELETE CASCADE
+  FOREIGN KEY(activity_type_id) REFERENCES activity_type(id) ON DELETE CASCADE
 );
 
 create table participation (

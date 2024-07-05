@@ -22,21 +22,21 @@ function Menu({ currentUser }) {
               Proposer une activité
             </li>
           </Link>
+          <Link to="/login">
+            <li className="text-white hover:text-white transition-colors duration-300">
+              Connexion
+            </li>
+          </Link>
+          <Link to="/signup">
+            <li className="text-white hover:text-white transition-colors duration-300">
+              Inscription
+            </li>
+          </Link>
           {currentUser && (
             <>
               <Link to={`/admin/${currentUser?.id}`}>
                 <li className="text-white hover:text-white transition-colors duration-300">
                   Profil
-                </li>
-              </Link>
-              <Link to="/signup">
-                <li className="text-white hover:text-white transition-colors duration-300">
-                  Inscription
-                </li>
-              </Link>
-              <Link to="/login">
-                <li className="text-white hover:text-white transition-colors duration-300">
-                  Connexion
                 </li>
               </Link>
               <Link to="/logout">

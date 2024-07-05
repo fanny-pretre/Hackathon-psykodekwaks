@@ -14,7 +14,9 @@ function Home() {
       <div className="w-1/2 bg-white flex flex-col justify-center p-8 text-black">
         <section className="text-center">
           <div className="mb-6">
-            <h1 className="text-5xl font-bold">Osez la pause</h1>
+            <h1 className="text-5xl font-bold">
+              Avec Connect, osez la pause !{" "}
+            </h1>
             <p className="mt-4 text-xl">
               Grâce à Connect, osez la pause avec vos collègues de travail.
               <br />
